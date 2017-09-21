@@ -43,19 +43,19 @@ var data = {
             {
                "ntCode":'LROP',
                "ntName":"Otopeni",
-               "ntNotams":'',
+               "ntNotams":{}
 
             },
             {
                "ntCode":'LRCL',
                "ntName":"Cluj",
-               "ntNotams":'',
+               "ntNotams":{}
 
             },
             {
                "ntCode":'LRTR',
                "ntName":"Timisoara",
-               "ntNotams":''
+               "ntNotams":{}
 
             }
          ]
@@ -63,10 +63,10 @@ var data = {
    ],
 
 } ;
-var source = fs.readFileSync(path.join(__dirname, '../../tesseract/views/index.hbs'), 'utf-8');
+var source = fs.readFileSync(path.join(__dirname, '../../euroscope-tesseract/views/index.hbs'), 'utf-8');
 var template = handlebars.compile(source);
 var html = template(data);
-fs.writeFile(path.join(__dirname, '../../tesseract/views/index.html'), html, 'utf8',function (err) {
+fs.writeFile(path.join(__dirname, '../../euroscope-tesseract/views/index.html'), html, 'utf8',function (err) {
     if (err) {
         console.log("failed to save");
     } else {
