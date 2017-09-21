@@ -8,6 +8,7 @@
   },
   "devDependencies": {
     "electron": "^1.7.6",
-    "handlebars": "^4.0.5"
+    "handlebars": "^4.0.5",
+    "notams": "^1.1.8"
   }
 }

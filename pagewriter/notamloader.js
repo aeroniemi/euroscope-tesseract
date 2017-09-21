@@ -1,7 +1,7 @@
 var handlebars = require('handlebars')
 var fs = require('fs');
 var path = require('path');
-
+var notams = require('notams');
 var data = {
    "firs":[
       {
@@ -65,10 +65,17 @@ var data = {
 } ;
 
 var notamLoad = function(){
+
     for (var i = 0; i < data.firs.length; i++) {
         for (var y = 0; y < data.firs[i].notamAirports.length; y++) {
-            console.log(data.firs.notamAirports[i].ntCode);
-    }     
+            console.log(data.firs[i].notamAirports[y].ntCode);
+            notams(data.firs[i].notamAirports[y].ntCode, { format: 'ICAO' }).then(results => {
+  data.firs[i].notamAirports[y].ntNotams = results
+  console.log(data.firs[i].notamAirports[y].ntNotams);
+})
+    }
+
     }
     
 }
+notamLoad();
