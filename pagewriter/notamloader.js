@@ -70,7 +70,7 @@ var notamLoad = function(){
         for (var y = 0; y < data.firs[i].notamAirports.length; y++) {
             console.log(data.firs[i].notamAirports[y].ntCode);
             notams(data.firs[i].notamAirports[y].ntCode, { format: 'ICAO' }).then(results => {
-  data.firs[i].notamAirports[y].ntNotams = results
+  data.firs[i].notamAirports[y].ntNotams = results;
   console.log(data.firs[i].notamAirports[y].ntNotams);
 })
     }
