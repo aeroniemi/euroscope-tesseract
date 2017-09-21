@@ -1,6 +1,6 @@
-var handlebars = require('handlebars'),
-    fs = require('fs');
-const path = require('path')
+var handlebars = require('handlebars');
+var fs = require('fs');
+var path = require('path');
 var data = {
    "firs":[
       {
