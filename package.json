@@ -1,6 +1,6 @@
 {
-  "name": "my-app",
-  "version": "0.1.0",
+  "name": "euroscope-tesseract",
+  "version": "0.1.2",
   "main": "main.js",
   "scripts": {
     "start": "electron .",
