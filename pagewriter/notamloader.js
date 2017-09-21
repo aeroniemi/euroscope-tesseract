@@ -63,3 +63,12 @@ var data = {
    ],
 
 } ;
+
+var notamLoad = function(){
+    for (var i = 0; i < data.firs.length; i++) {
+        for (var y = 0; y < data.firs[i].notamAirports.length; y++) {
+            console.log(data.firs.notamAirports[i].ntCode);
+    }     
+    }
+    
+}
