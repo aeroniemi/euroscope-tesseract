@@ -65,14 +65,13 @@ var data = {
 } ;
 
 var notamLoad = function(){
-
     for (var i = 0; i < data.firs.length; i++) {
         for (var y = 0; y < data.firs[i].notamAirports.length; y++) {
-            console.log(data.firs[i].notamAirports[y].ntCode);
-            notams(data.firs[i].notamAirports[y].ntCode, { format: 'ICAO' }).then(results => {
-  data.firs[i].notamAirports[y].ntNotams = results;
-  console.log(data.firs[i].notamAirports[y].ntNotams);
-})
+            var nqAirport = data.firs[i].notamAirports[y]
+            console.log(nqAirport.ntCode);
+            notams(nqAirport.ntCode, { format: 'ICAO' }).then(results => {nqAirport.ntNotams = results;
+                                                                          console.log(nqAirport.ntNotams);
+                                                                         })
     }
 
     }
