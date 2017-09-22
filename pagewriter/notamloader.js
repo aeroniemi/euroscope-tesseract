@@ -61,7 +61,7 @@ var data = {
                 }
             ]
         }
-    ],
+    ]
 
 };
 
@@ -87,11 +87,7 @@ var notamLoad = function () {
 			callbacks.push(notams(nqAirport.ntCode, {
 				format: 'ICAO'
 			}).then(function (values) {
-				return {
-					nqAirport: nqAirport,
-					icao: values[0].icao,
-					notams: values[0].notams
-				};
+				nqAirport.ntNotams = values[0].notams;
 			}));
 		}
 	}
