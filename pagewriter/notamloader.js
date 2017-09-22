@@ -61,66 +61,40 @@ var data = {
 
                 }
             ]
-        }
-    ]
+			]
+	}
+	]
 
 };
 
 var notamLoadCompleted = function (values) {
 	fs.writeFileSync("data.json", JSON.stringify(data), 'utf8', function (err) {
-	if (err) {
-		console.log("failed to save");
-        reject();
-	} else {
-		console.log("succeeded in saving");
-       // pageWriter.formPage(data)
-        resolve();
-	}
-});
-
-}
-var notamLoad = function () {
-    return new Promise(function (resolve, reject) {
-	var callbacks = [];
-	for (var i = 0; i < data.firs.length; i++) {
-		for (var y = 0; y < data.firs[i].notamAirports.length; y++) {
-			let nqAirport = data.firs[i].notamAirports[y];
-			console.log(nqAirport.ntCode);
-			callbacks.push(notams(nqAirport.ntCode, {
-				format: 'ICAO'
-			}).then(function (values) {
-				nqAirport.ntNotams = values[0].notams;
-			}));
+		if (err) {
+			console.log("failed to save");
+			reject();
+		} else {
+			console.log("succeeded in saving");
+			// pageWriter.formPage(data)
+			resolve();
 		}
-	}
-	Promise.all(callbacks).then(notamLoadCompleted);
+	});
 
 }
-                       }
+module.exports.notamLoad = function () {
+	return new Promise(function (resolve, reject) {
+		var callbacks = [];
+		for (var i = 0; i < data.firs.length; i++) {
+			for (var y = 0; y < data.firs[i].notamAirports.length; y++) {
+				let nqAirport = data.firs[i].notamAirports[y];
+				console.log(nqAirport.ntCode);
+				callbacks.push(notams(nqAirport.ntCode, {
+					format: 'ICAO'
+				}).then(function (values) {
+					nqAirport.ntNotams = values[0].notams;
+				}));
+			}
+		}
+	})
+	resolve(Promise.all(callbacks).then(notamLoadCompleted));
 
-
-//notamLoad();
-/*
-var notamLoad = function(){
-    var callbacks = [];
-    for (var i = 0; i < data.firs.length; i++) {
-        for (var y = 0; y < data.firs[i].notamAirports.length; y++) {
-            var nqAirport = data.firs[i].notamAirports[y];
-            console.log(nqAirport.ntCode);
-            callbacks.push(notams(nqAirport.ntCode, { format: 'ICAO' }).then(results => {
-                nqAirport.ntNotams = results;
-                console.log(nqAirport);
-            }));
-        }
-        console.log (data.firs.length)
-     Promise.all(callbacks).then(function (something){
-
-notamLoadCompleted();
-})
-    }
-
-var notamLoadCompleted = function() {
-    fs.writeFileSync("file.json", JSON.stringify(data));
 }
-}
-notamLoad();*/
