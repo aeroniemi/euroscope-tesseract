@@ -65,7 +65,8 @@
 					<div class="card-body">
 						<h4 class="card-title"><strong>{{this.ntCode}}</strong> {{this.ntName}}</h4>
 						<p class="card-text">
-							<div class="row"> {{this.ntNotams}}</div>
+
+                        {{#each this.ntNotams}}<div class="row"> thtt{{this}}</div>{{/each}}
 					</div>
 				</div>
 			</div>

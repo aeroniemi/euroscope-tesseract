@@ -2,6 +2,7 @@ var handlebars = require('handlebars')
 var fs = require('fs');
 var path = require('path');
 var notams = require('notams');
+var pageWriter = require('./pageWriter.js')
 var data = {
 	"firs": [
 		{
@@ -42,20 +43,20 @@ var data = {
 			"notamAirports": [
 				{
 					"ntCode": 'LBSF',
-					"ntName": "Otopeni",
+					"ntName": "Sofia",
 					"ntNotams": "",
 
                 },
 				{
 					"ntCode": 'LBBG',
-					"ntName": "Cluj",
+					"ntName": "Burgas",
 					"ntNotams": "",
 
                 },
 				{
 
 					"ntCode": 'LBWN',
-					"ntName": "Timisoara",
+					"ntName": "Varna",
 					"ntNotams": ""
 
                 }
@@ -66,23 +67,22 @@ var data = {
 };
 
 var notamLoadCompleted = function (values) {
-	for (var i = 0; i < values.length; i++) {
-		//console.log(values[i]);
-
-		console.log(values[i]);
-/*
-      if (firChar === 'LB') {
-		console.log('bg');
-	}*/
-		//fs.writeFileSync("file.json", JSON.stringify(data));
-
+	fs.writeFileSync("data.json", JSON.stringify(data), 'utf8', function (err) {
+	if (err) {
+		console.log("failed to save");
+	} else {
+		console.log("succeeded in saving");
+       // pageWriter.formPage(data)
 	}
-};
+});
+
+}
 var notamLoad = function () {
+    return new Promise(function (resolve, reject) {
 	var callbacks = [];
 	for (var i = 0; i < data.firs.length; i++) {
 		for (var y = 0; y < data.firs[i].notamAirports.length; y++) {
-			var nqAirport = data.firs[i].notamAirports[y];
+			let nqAirport = data.firs[i].notamAirports[y];
 			console.log(nqAirport.ntCode);
 			callbacks.push(notams(nqAirport.ntCode, {
 				format: 'ICAO'
@@ -91,11 +91,13 @@ var notamLoad = function () {
 			}));
 		}
 	}
-	Promise.all(callbacks).then(notamLoadCompleted);
+	resolve(Promise.all(callbacks)).then(notamLoadCompleted);
 
 }
-notamLoad();
+                       }
 
+
+//notamLoad();
 /*
 var notamLoad = function(){
     var callbacks = [];
