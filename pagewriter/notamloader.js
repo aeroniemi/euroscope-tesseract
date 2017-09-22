@@ -70,9 +70,11 @@ var notamLoadCompleted = function (values) {
 	fs.writeFileSync("data.json", JSON.stringify(data), 'utf8', function (err) {
 	if (err) {
 		console.log("failed to save");
+        reject();
 	} else {
 		console.log("succeeded in saving");
        // pageWriter.formPage(data)
+        resolve();
 	}
 });
 
@@ -91,7 +93,7 @@ var notamLoad = function () {
 			}));
 		}
 	}
-	resolve(Promise.all(callbacks)).then(notamLoadCompleted);
+	Promise.all(callbacks).then(notamLoadCompleted);
 
 }
                        }
