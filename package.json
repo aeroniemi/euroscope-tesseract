@@ -1,14 +1,19 @@
 {
-  "name": "euroscope-tesseract",
-  "version": "0.1.2",
-  "main": "main.js",
-  "scripts": {
-    "start": "electron .",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "devDependencies": {
-    "electron": "^1.7.6",
-    "handlebars": "^4.0.5",
-    "notams": "^1.1.8"
-  }
+	"name": "euroscope-tesseract",
+	"version": "0.1.2",
+	"main": "main.js",
+	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/aeroniemi/euroscope-tesseract.git"
+	},
+	"scripts": {
+		"start": "electron .",
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"devDependencies": {
+		"electron": "^1.7.6",
+		"handlebars": "^4.0.5",
+		"notams": "^1.1.8"
+	}
 }
