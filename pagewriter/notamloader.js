@@ -69,14 +69,15 @@ var notamLoadCompleted = function (values) {
 	for (var i = 0; i < values.length; i++) {
 		//console.log(values[i]);
 
-		console.log(values[i][0])
+		console.log(values[i]);
 /*
       if (firChar === 'LB') {
 		console.log('bg');
 	}*/
 		//fs.writeFileSync("file.json", JSON.stringify(data));
 
-	}}
+	}
+};
 var notamLoad = function () {
 	var callbacks = [];
 	for (var i = 0; i < data.firs.length; i++) {
@@ -85,6 +86,12 @@ var notamLoad = function () {
 			console.log(nqAirport.ntCode);
 			callbacks.push(notams(nqAirport.ntCode, {
 				format: 'ICAO'
+			}).then(function (values) {
+				return {
+					nqAirport: nqAirport,
+					icao: values[0].icao,
+					notams: values[0].notams
+				};
 			}));
 		}
 	}
