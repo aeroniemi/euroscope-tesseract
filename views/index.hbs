@@ -1,87 +1,94 @@
 <!DOCTYPE html>
-<html lang="en"><head>
-<meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
+<html lang="en">
+
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="">
+	<meta name="author" content="">
 
 
-    <title>Aircraft Type selection</title>
+	<title>Aircraft Type selection</title>
 
-    <!-- Bootstrap core CSS -->
-<!-- Bootstrap core CSS -->
-    <link href="../static/bootstrap.css" rel="stylesheet">
+	<!-- Bootstrap core CSS -->
+	<!-- Bootstrap core CSS -->
+	<link href="../static/bootstrap.css" rel="stylesheet">
 
-    <!-- Custom styles for this template -->
-    <link href="../static/style.css" rel="stylesheet">
+	<!-- Custom styles for this template -->
+	<link href="../static/style.css" rel="stylesheet">
 
-  </head>
+</head>
 
-  <body>
-
-
-    <div class="container">
-
-      <div class="starter-template">
-        <h1>Euroscope</h1>
-        <p class="lead">Select FIR</p>
-      </div>
-        <div class="row">
-            {{#each firs}}
-        <div class="col-6 acbox"><div class="card">
-  <img class="card-img-top" src="../static/images/{{firCode}}.png" alt="{{firCode}} Diagram">
-  <div class="card-body">
-    <h4 class="card-title"><strong>{{firCode}}</strong> {{firName}}</h4>
-    <p class="card-text">
-      <div class="row">
-        <div class="col-6">Last updated:</div>
-        <div class="col-6"> {{sfUpdated}}</div>
-      </div>
-      <div class="row">
-        <div class="col-6">Identifier:</div>
-        <div class="col-6"> {{id}}</div>
-      </div>
-      <div class="row">
-        <div class="col-6">AIRAC:</div>
-        <div class="col-6"> {{sfAirac}}</div>
-      </div>
-      <div class="row">
-        <div class="col-6">Last Position</div>
-        <div class="col-6"> {{sfLastPos}}</div>
-      </div>
-      </p>
-            <div class="row">
-        <div class="col-6"><a href="#" class="btn btn-primary" id="startEs{{firCode}}">Start ES</a></div>
-        <div class="col-6"><a href="#" class="btn btn-primary" id="updateSf{{firCode}}">Update</a></div>
-      </div>
-  </div>
-</div></div>
-        {{/each}}
+<body>
 
 
+	<div class="container">
 
-      </div>
-    <div class="starter-template">
-        <h1>FIR NOTAMS</h1>
-        <p class="lead">Must Read</p>
-      </div>
-
-       <div class="row">
-        {{#each firs}}{{#each this.notamAirports}}
-        <div class="col-6 acbox"><div class="card">
-  <div class="card-body">
-    <h4 class="card-title"><strong>{{this.ntCode}}</strong> {{this.ntName}}</h4>
-    <p class="card-text">
-      <div class="row"> {{this.ntNotams}}
-      </div
-  </div>
-</div></div>
-      </div>
-
-            {{/each}}{{/each}}
+		<div class="starter-template">
+			<h1>Euroscope</h1>
+			<p class="lead">Select FIR</p>
+		</div>
+		<div class="row">
+			{{#each firs}}
+			<div class="col-6 acbox">
+				<div class="card">
+					<img class="card-img-top" src="../static/images/{{firCode}}.png" alt="{{firCode}} Diagram">
+					<div class="card-body">
+						<h4 class="card-title"><strong>{{firCode}}</strong> {{firName}}</h4>
+						<p class="card-text">
+							<div class="row">
+								<div class="col-6">Last updated:</div>
+								<div class="col-6"> {{sfUpdated}}</div>
+							</div>
+							<div class="row">
+								<div class="col-6">Identifier:</div>
+								<div class="col-6"> {{id}}</div>
+							</div>
+							<div class="row">
+								<div class="col-6">AIRAC:</div>
+								<div class="col-6"> {{sfAirac}}</div>
+							</div>
+							<div class="row">
+								<div class="col-6">Last Position</div>
+								<div class="col-6"> {{sfLastPos}}</div>
+							</div>
+						</p>
+						<div class="row">
+							<div class="col-6"><a href="#" class="btn btn-primary" id="startEs{{firCode}}">Start ES</a></div>
+							<div class="col-6"><a href="#" class="btn btn-primary" id="updateSf{{firCode}}">Update</a></div>
+						</div>
+					</div>
+				</div>
+			</div>
+			{{/each}}
 
 
 
-          <script src="name.js" type="text/javascript"></script>
-</body></html>
+		</div>
+		<div class="starter-template">
+			<h1>FIR NOTAMS</h1>
+			<p class="lead">Must Read</p>
+		</div>
+
+		<div class="row">
+			{{#each firs}}{{#each this.notamAirports}}
+			<div class="col-6 acbox">
+				<div class="card">
+					<div class="card-body">
+						<h4 class="card-title"><strong>{{this.ntCode}}</strong> {{this.ntName}}</h4>
+						<p class="card-text">
+							<div class="row"> {{this.ntNotams}}
+							</div </div>
+					</div>
+				</div>
+			</div>
+
+			{{/each}}{{/each}}
+
+
+
+			<script src="name.js" type="text/javascript"></script>
+</body>
+
+</html>
