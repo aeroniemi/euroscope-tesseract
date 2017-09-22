@@ -65,7 +65,11 @@ var data = {
 
 };
 
+var notamLoadCompleted = function (values) {
+		console.log("it worked");
+		fs.writeFileSync("file.json", JSON.stringify(data));
 
+	}
 var notamLoad = function () {
 	var callbacks = [];
 	for (var i = 0; i < data.firs.length; i++) {
@@ -79,11 +83,7 @@ var notamLoad = function () {
 	}
 	console.log(data.firs.length);
 	Promise.all(callbacks).then(notamLoadCompleted);
-	var notamLoadCompleted = function (values) {
-		console.log("it worked");
-		fs.writeFileSync("file.json", JSON.stringify(data));
 
-	}
 }
 notamLoad();
 
