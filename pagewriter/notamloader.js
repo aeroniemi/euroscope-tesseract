@@ -61,24 +61,29 @@ var data = {
 
                 }
             ]
-			]
+
 	}
 	]
 
 };
 
 var notamLoadCompleted = function (values) {
-	fs.writeFileSync("data.json", JSON.stringify(data), 'utf8', function (err) {
-		if (err) {
-			console.log("failed to save");
-			reject();
-		} else {
-			console.log("succeeded in saving");
-			// pageWriter.formPage(data)
-			resolve();
-		}
-	});
+	return new Promise(function (resolve, reject) {
+		fs.writeFileSync("data.json", JSON.stringify(data), 'utf8', function (err) {
+			if (err) {
+				console.log("failed to save");
+				reject();
+			} else {
+				console.log("succeeded in saving");
+				// pageWriter.formPage(data)
+				resolve();
+			}
+		});
+	})
 
+}
+var resoluton = function () {
+	resolve();
 }
 module.exports.notamLoad = function () {
 	return new Promise(function (resolve, reject) {
@@ -95,6 +100,5 @@ module.exports.notamLoad = function () {
 			}
 		}
 	})
-	resolve(Promise.all(callbacks).then(notamLoadCompleted));
-
+	Promise.all(callbacks).then(notamLoadCompleted).then(resolution)
 }
