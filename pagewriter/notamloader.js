@@ -1,8 +1,8 @@
-var handlebars = require('handlebars')
+var handlebars = require('handlebars');
 var fs = require('fs');
 var path = require('path');
 var notams = require('notams');
-var pageWriter = require('./pageWriter.js')
+var pageWriter = require('./pageWriter.js');
 var data = {
 	"firs": [
 		{
@@ -14,21 +14,21 @@ var data = {
 			"sfLastPos": "LRBB_L_CTR",
 			"notamAirports": [
 				{
-					ntCode: 'LROP',
+					ntCode: "LROP",
 					ntName: "Otopeni",
-					ntNotams: '',
+					ntNotams: " ",
 
                 },
 				{
-					ntCode: 'LRCL',
+					ntCode: "LRCL",
 					ntName: "Cluj",
-					ntNotams: '',
+					ntNotams: " ",
 
                 },
 				{
-					ntCode: 'LRTR',
+					ntCode: "LRTR",
 					ntName: "Timisoara",
-					ntNotams: '',
+					ntNotams: " ",
 
                 }
             ]
@@ -42,22 +42,22 @@ var data = {
 			"sfLastPos": "LBSR_CTR",
 			"notamAirports": [
 				{
-					"ntCode": 'LBSF',
+					"ntCode": "LBSF",
 					"ntName": "Sofia",
-					"ntNotams": "",
+					"ntNotams": " ",
 
                 },
 				{
-					"ntCode": 'LBBG',
+					"ntCode": "LBBG",
 					"ntName": "Burgas",
-					"ntNotams": "",
+					"ntNotams": " ",
 
                 },
 				{
 
-					"ntCode": 'LBWN',
+					"ntCode": "LBWN",
 					"ntName": "Varna",
-					"ntNotams": ""
+					"ntNotams": " "
 
                 }
             ]
@@ -82,7 +82,7 @@ module.exports = function () {
 			}
 		}
 		Promise.all(callbacks).then(function () {
-            console.log("test");
+			console.log("test");
 			fs.writeFile("data.json", JSON.stringify(data), function (err) {
 				if (err) {
 					console.log("failed to save");
