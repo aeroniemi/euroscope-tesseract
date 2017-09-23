@@ -6,6 +6,7 @@ const BrowserWindow = electron.BrowserWindow;
 const path = require('path');
 var pageWriter = require('./pagewriter/pageWriter.js');
 var notamLoader = require('./pagewriter/notamloader.js');
+//var notamParser = require('./pagewriter/notamparser.js');
 const url = require('url');
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.

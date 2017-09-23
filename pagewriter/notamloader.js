@@ -77,7 +77,11 @@ module.exports = function () {
 				callbacks.push(notams(nqAirport.ntCode, {
 					format: 'ICAO'
 				}).then(function (values) {
+
 					nqAirport.ntNotams = values[0].notams;
+
+
+					//JSON.stringify(values[0].notams).replace(/(\n|\\n)+/g, '<br>').replace(/^[^\-]*(B\))/g, '').replace(/(CREATED:)(.*)+/g, '')
 				}));
 			}
 		}
