@@ -77,11 +77,18 @@ module.exports = function () {
 				callbacks.push(notams(nqAirport.ntCode, {
 					format: 'ICAO'
 				}).then(function (values) {
+					var regex = /\b(\w)\) ([\w\W]+?)(?=\s\w\)|CREATED:)/g;
+					var currentArray = [];
+					console.log(values[0].notams.join("\n"));
+					nqAirport.ntNotams = {};
 
-					nqAirport.ntNotams = values[0].notams;
-
-
-					//JSON.stringify(values[0].notams).replace(/(\n|\\n)+/g, '<br>').replace(/^[^\-]*(B\))/g, '').replace(/(CREATED:)(.*)+/g, '')
+					while (currentArray = regex.exec(values[0].notams.join("\n"))) {
+						if (currentArray[1] == "Q") {
+							// ignore Q
+						} else {
+							nqAirport.ntNotams[currentArray[1]] = currentArray[2];
+						}
+					}
 				}));
 			}
 		}
