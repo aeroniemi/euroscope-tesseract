@@ -67,7 +67,8 @@ var data = {
 
 };
 
-var notamLoadCompleted = function (values) {
+module.exports.notamLoadCompleted = function () {
+	console.log("tom");
 	return new Promise(function (resolve, reject) {
 		fs.writeFileSync("data.json", JSON.stringify(data), 'utf8', function (err) {
 			if (err) {
@@ -81,9 +82,6 @@ var notamLoadCompleted = function (values) {
 		});
 	})
 
-}
-var resoluton = function () {
-	resolve();
 }
 module.exports.notamLoad = function () {
 	return new Promise(function (resolve, reject) {
@@ -100,5 +98,5 @@ module.exports.notamLoad = function () {
 			}
 		}
 	})
-	Promise.all(callbacks).then(notamLoadCompleted).then(resolution)
+	Promise.all(callbacks).then(notamLoadCompleted)
 }
