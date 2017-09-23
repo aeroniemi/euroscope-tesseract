@@ -73,7 +73,6 @@ module.exports = function () {
 		for (var i = 0; i < data.firs.length; i++) {
 			for (var y = 0; y < data.firs[i].notamAirports.length; y++) {
 				let nqAirport = data.firs[i].notamAirports[y];
-				console.log(nqAirport.ntCode);
 				nqAirport.ntNotams = [];
 
 				callbacks.push(notams(nqAirport.ntCode, {

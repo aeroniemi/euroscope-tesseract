@@ -22,6 +22,7 @@ function startPrep() {
 
 function createWindow() {
 	// Create the browser window.
+	console.log("Ready to go")
 	mainWindow = new BrowserWindow({
 		width: 800,
 		height: 600
