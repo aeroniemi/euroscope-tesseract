@@ -82,7 +82,8 @@ module.exports = function () {
 			}
 		}
 		Promise.all(callbacks).then(function () {
-			fs.writeFileSync("data.json", JSON.stringify(data), 'utf8', function (err) {
+            console.log("test");
+			fs.writeFile("data.json", JSON.stringify(data), function (err) {
 				if (err) {
 					console.log("failed to save");
 					reject();
