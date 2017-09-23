@@ -67,23 +67,7 @@ var data = {
 
 };
 
-module.exports.notamLoadCompleted = function () {
-	console.log("tom");
-	return new Promise(function (resolve, reject) {
-		fs.writeFileSync("data.json", JSON.stringify(data), 'utf8', function (err) {
-			if (err) {
-				console.log("failed to save");
-				reject();
-			} else {
-				console.log("succeeded in saving");
-				// pageWriter.formPage(data)
-				resolve();
-			}
-		});
-	})
-
-}
-module.exports.notamLoad = function () {
+module.exports = function () {
 	return new Promise(function (resolve, reject) {
 		var callbacks = [];
 		for (var i = 0; i < data.firs.length; i++) {
@@ -97,6 +81,17 @@ module.exports.notamLoad = function () {
 				}));
 			}
 		}
-	})
-	Promise.all(callbacks).then(notamLoadCompleted)
-}
+		Promise.all(callbacks).then(function () {
+			fs.writeFileSync("data.json", JSON.stringify(data), 'utf8', function (err) {
+				if (err) {
+					console.log("failed to save");
+					reject();
+				} else {
+					console.log("succeeded in saving");
+					// pageWriter.formPage(data)
+					resolve();
+				}
+			});
+		});
+	});
+};
