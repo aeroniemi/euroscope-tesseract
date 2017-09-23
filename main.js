@@ -1,18 +1,18 @@
-const electron = require('electron')
+const electron = require('electron');
 // Module to control application life.
-const app = electron.app
+const app = electron.app;
 // Module to create native browser window.
-const BrowserWindow = electron.BrowserWindow
-const path = require('path')
-var pageWriter = require('./pagewriter/pageWriter.js')
-var notamLoader = require('./pagewriter/notamloader.js')
-const url = require('url')
+const BrowserWindow = electron.BrowserWindow;
+const path = require('path');
+var pageWriter = require('./pagewriter/pageWriter.js');
+var notamLoader = require('./pagewriter/notamloader.js');
+const url = require('url');
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow
 
 function startPrep() {
-	var chainPromise = notamLoader.notamLoad().then(pageWriter.formPage)
+	var chainPromise = notamLoader.then(pageWriter.formPage);
 
 }
 
@@ -24,13 +24,13 @@ function createWindow() {
 	mainWindow = new BrowserWindow({
 		width: 800,
 		height: 600
-	})
+	});
 	// and load the index.html of the app.
 	mainWindow.loadURL(url.format({
 		pathname: path.join(__dirname, '/views/index.html'),
 		protocol: 'file:',
 		slashes: true
-	}))
+	}));
 	// Open the DevTools.
 	// mainWindow.webContents.openDevTools()
 	// Emitted when the window is closed.
@@ -39,13 +39,13 @@ function createWindow() {
 		// in an array if your app supports multi windows, this is the time
 		// when you should delete the corresponding element.
 		mainWindow = null
-	})
+	});
 }
 
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
-app.on('ready', startPrep)
+app.on('ready', startPrep);
 
 // Quit when all windows are closed.
 app.on('window-all-closed', function () {
@@ -53,17 +53,17 @@ app.on('window-all-closed', function () {
 	// to stay active until the user quits explicitly with Cmd + Q
 
 	if (process.platform !== 'darwin') {
-		app.quit()
+		app.quit();
 	}
-})
+});
 
 app.on('activate', function () {
 	// On OS X it's common to re-create a window in the app when the
 	// dock icon is clicked and there are no other windows open.
 	if (mainWindow === null) {
-		createWindow()
+		createWindow();
 	}
-})
+});
 
 
 // In this file you can include the rest of your app's specific main process
