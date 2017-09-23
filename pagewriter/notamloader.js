@@ -83,17 +83,17 @@ module.exports = function () {
 
 					for (var i = 0; i < currentValue.length; i++) {
 						var currentArray = [];
-						var currentOutArray = [];
+						var currentOutObject = {};
 						while (currentArray = regex.exec(currentValue[i])) {
 							if (currentArray[1] == "Q") {
 								// ignore Q
 							} else if (currentArray[1] == "A") {
 								// ignore A
 							} else {
-								currentOutArray.push([currentArray[1], currentArray[2]]);
+								currentOutObject[currentArray[1]] = currentArray[2];
 							}
 						}
-						nqAirport.ntNotams.push(currentOutArray);
+						nqAirport.ntNotams.push(currentOutObject);
 					}
 				}));
 			}
