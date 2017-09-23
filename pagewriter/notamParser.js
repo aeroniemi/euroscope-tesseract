@@ -21,10 +21,10 @@ module.exports = function () {
 			console.log("test");
 			fs.writeFile("data.json", JSON.stringify(data), function (err) {
 				if (err) {
-					console.log("failed to save");
+					//console.log("failed to save");
 					reject();
 				} else {
-					console.log("succeeded in saving");
+					//console.log("succeeded in saving");
 					// pageWriter.formPage(data)
 					resolve();
 				}

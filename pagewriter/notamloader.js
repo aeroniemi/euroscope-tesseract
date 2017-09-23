@@ -73,7 +73,7 @@ module.exports = function () {
 		for (var i = 0; i < data.firs.length; i++) {
 			for (var y = 0; y < data.firs[i].notamAirports.length; y++) {
 				let nqAirport = data.firs[i].notamAirports[y];
-				console.log(nqAirport.ntCode);
+				//console.log(nqAirport.ntCode);
 				callbacks.push(notams(nqAirport.ntCode, {
 					format: 'ICAO'
 				}).then(function (values) {
@@ -84,9 +84,9 @@ module.exports = function () {
 
 					while (currentArray = regex.exec(currentValue)) {
 						if (currentArray[1] == "Q") {
-							// ignore Q
+							// ignore Q and A
 						} else if (currentArray[1] == "A") {
-							// ignore A
+
 						} else {
 							nqAirport.ntNotams[currentArray[1]] = currentArray[2];
 						}
@@ -95,13 +95,13 @@ module.exports = function () {
 			}
 		}
 		Promise.all(callbacks).then(function () {
-			console.log("test");
+			//console.log("test");
 			fs.writeFile("data.json", JSON.stringify(data), function (err) {
 				if (err) {
-					console.log("failed to save");
+					//console.log("failed to save");
 					reject();
 				} else {
-					console.log("succeeded in saving");
+					//console.log("succeeded in saving");
 					// pageWriter.formPage(data)
 					resolve();
 				}
