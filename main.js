@@ -12,7 +12,7 @@ const url = require('url');
 let mainWindow
 
 function startPrep() {
-	var chainPromise = notamLoader().then(pageWriter.formPage);
+	var chainPromise = notamLoader().then(pageWriter.formPage).then(createWindow);
 
 }
 
