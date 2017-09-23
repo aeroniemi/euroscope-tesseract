@@ -74,22 +74,27 @@ module.exports = function () {
 			for (var y = 0; y < data.firs[i].notamAirports.length; y++) {
 				let nqAirport = data.firs[i].notamAirports[y];
 				console.log(nqAirport.ntCode);
+				nqAirport.ntNotams = [];
+
 				callbacks.push(notams(nqAirport.ntCode, {
 					format: 'ICAO'
 				}).then(function (values) {
 					var regex = /\b(\w)\) ([\w\W]+?)(?=\s\w\)|CREATED:)/g;
-					var currentArray = [];
-					var currentValue = values[0].notams.join("\n");
-					nqAirport.ntNotams = {};
+					var currentValue = values[0].notams;
 
-					while (currentArray = regex.exec(currentValue)) {
-						if (currentArray[1] == "Q") {
-							// ignore Q
-						} else if (currentArray[1] == "A") {
-							// ignore A
-						} else {
-							nqAirport.ntNotams[currentArray[1]] = currentArray[2];
+					for (var i = 0; i < currentValue.length; i++) {
+						var currentArray = [];
+						var currentOutArray = [];
+						while (currentArray = regex.exec(currentValue[i])) {
+							if (currentArray[1] == "Q") {
+								// ignore Q
+							} else if (currentArray[1] == "A") {
+								// ignore A
+							} else {
+								currentOutArray.push([currentArray[1], currentArray[2]]);
+							}
 						}
+						nqAirport.ntNotams.push(currentOutArray);
 					}
 				}));
 			}
