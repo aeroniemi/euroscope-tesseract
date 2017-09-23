@@ -9,21 +9,21 @@
 			"sfLastPos": "LRBB_L_CTR",
 			"notamAirports": [
 				{
-					ntCode: 'LROP',
+					ntCode: "LROP",
 					ntName: "Otopeni",
-					ntNotams: '',
+					ntNotams: " ",
 
                 },
 				{
-					ntCode: 'LRCL',
+					ntCode: "LRCL",
 					ntName: "Cluj",
-					ntNotams: '',
+					ntNotams: " ",
 
                 },
 				{
-					ntCode: 'LRTR',
+					ntCode: "LRTR",
 					ntName: "Timisoara",
-					ntNotams: '',
+					ntNotams: " ",
 
                 }
             ]
@@ -37,22 +37,22 @@
 			"sfLastPos": "LBSR_CTR",
 			"notamAirports": [
 				{
-					"ntCode": 'LBSF',
+					"ntCode": "LBSF",
 					"ntName": "Sofia",
-					"ntNotams": "",
+					"ntNotams": " ",
 
                 },
 				{
-					"ntCode": 'LBBG',
+					"ntCode": "LBBG",
 					"ntName": "Burgas",
-					"ntNotams": "",
+					"ntNotams": " ",
 
                 },
 				{
 
-					"ntCode": 'LBWN',
+					"ntCode": "LBWN",
 					"ntName": "Varna",
-					"ntNotams": ""
+					"ntNotams": " "
 
                 }
             ]
