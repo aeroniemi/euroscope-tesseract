@@ -79,12 +79,14 @@ module.exports = function () {
 				}).then(function (values) {
 					var regex = /\b(\w)\) ([\w\W]+?)(?=\s\w\)|CREATED:)/g;
 					var currentArray = [];
-					console.log(values[0].notams.join("\n"));
+					var currentValue = values[0].notams.join("\n");
 					nqAirport.ntNotams = {};
 
-					while (currentArray = regex.exec(values[0].notams.join("\n"))) {
+					while (currentArray = regex.exec(currentValue)) {
 						if (currentArray[1] == "Q") {
 							// ignore Q
+						} else if (currentArray[1] == "A") {
+							// ignore A
 						} else {
 							nqAirport.ntNotams[currentArray[1]] = currentArray[2];
 						}
