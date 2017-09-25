@@ -62,13 +62,26 @@ var data = {
                 }
             ]
 
+	},
+
+		{
+			"id": 2,
+			"firCode": "EURE",
+			"firName": "Eurocontrol East",
+			"sfUpdated": "2017 09 10",
+			"sfAirac": "1612",
+			"sfLastPos": "EURE_FSS",
+			"notamAirports": [
+            ]
+
 	}
+
 	]
 
 };
 
 module.exports = function () {
-	return new Promise(function (resolve, reject) {
+	return new Promise(function (resolva, reject) {
 		var callbacks = [];
 		for (var i = 0; i < data.firs.length; i++) {
 			for (var y = 0; y < data.firs[i].notamAirports.length; y++) {
