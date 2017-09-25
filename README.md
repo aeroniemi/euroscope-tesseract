@@ -9,6 +9,12 @@ My reasons for making this are simple. Lots of VATSIM atc controllers are lazy w
 * display notams on startup
 * allow for easier selection of sectorfiles (for people that have many)
 
+### What actually works?
+
+Currently, development is slow. However, if one was to use this now, the following things would work:
+* using the config object within notamParser, search FAA AIMS for notams in ICAO format, and display these at the bottom of the home page. 
+* Creates boxes for each FIR, and each notam airport on homepage
+* ***That's about it***
 
 ### Potential future goals
 
