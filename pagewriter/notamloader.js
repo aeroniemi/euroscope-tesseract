@@ -81,7 +81,7 @@ var data = {
 };
 
 module.exports = function () {
-	return new Promise(function (resolva, reject) {
+	return new Promise(function (resolve, reject) {
 		var callbacks = [];
 		for (var i = 0; i < data.firs.length; i++) {
 			for (var y = 0; y < data.firs[i].notamAirports.length; y++) {
