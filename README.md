@@ -9,6 +9,10 @@ My reasons for making this are simple. Lots of VATSIM atc controllers are lazy w
 * display notams on startup
 * allow for easier selection of sectorfiles (for people that have many)
 
+### Americanisation?
+
+Don't ask. It's not happening. No support will be provided for inferior measurements (inches of murcury; lbs, etc).  
+
 ### What actually works?
 
 Currently, development is slow. However, if one was to use this now, the following things would work:
