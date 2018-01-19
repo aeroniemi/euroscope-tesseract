@@ -1,7 +1,7 @@
 
 # euroscope-tesseract
 A Euroscope launcher
-
+> This project is not currently supported, or actively developed; this may change in the future
 ## Intentions
 
 My reasons for making this are simple. Lots of VATSIM atc controllers are lazy when it comes to remembering to keep up to date with real world NOTAMs, and quite frequently don't have a clue what is open, closed, or active. Being in the BG training department, this is incredibly annoying. My market research suggests that the first reason that people don't bother is that it is "a lot of effort". Therefore, my aim is to make it so that a controller doesn't need to go out of their way to know about the info, and is simply presented with it on startup.
